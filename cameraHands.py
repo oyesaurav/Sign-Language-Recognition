@@ -8,7 +8,7 @@ import numpy as np
 import time
 import pandas as pd
 
-model = load_model('IVP\smnist.h5')
+model = load_model('tfmodel\smnist.h5')
 
 mphands = mp.solutions.hands
 hands = mphands.Hands()
