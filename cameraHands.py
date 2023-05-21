@@ -8,8 +8,8 @@ import numpy as np
 import time
 import pandas as pd
 
-model = load_model('IVP\smnist.h5')
-
+model = load_model('tfmodel\smnist.h5')
+# model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 mphands = mp.solutions.hands
 hands = mphands.Hands()
 mp_drawing = mp.solutions.drawing_utils
@@ -82,6 +82,7 @@ while True:
         pixeldata = pixeldata.reshape(-1,28,28,1)
         prediction = model.predict(pixeldata)
         predarray = np.array(prediction[0])
+        print(predarray)
         letter_prediction_dict = {letterpred[i]: predarray[i] for i in range(len(letterpred))}
         predarrayordered = sorted(predarray, reverse=True)
         high1 = predarrayordered[0]
